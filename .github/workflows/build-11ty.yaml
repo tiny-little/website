@@ -12,14 +12,19 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: 'pnpm'
       - name: Install dependencies
-        run: npm clean-install
+        run: pnpm install
       - name: Build with Eleventy
-        run: npx eleventy
+        run: pnpm run build
       - name: Upload Eleventy build as artifact
         id: eleventy-build
         uses: actions/upload-pages-artifact@v3
@@ -28,6 +33,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
+    # This job should only run on pushes to the main branch
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     environment:
       name: github-pages
     permissions:
