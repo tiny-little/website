@@ -24,7 +24,6 @@ jobs:
       - name: Build with Eleventy
         run: pnpm run build
       - name: Upload Eleventy build as artifact
-        id: eleventy-build
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist/
@@ -41,5 +40,3 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
-        with:
-          artifact_name: eleventy-build
