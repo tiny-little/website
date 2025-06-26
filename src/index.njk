@@ -1,0 +1,118 @@
+---
+layout: default.njk
+---
+
+<style>
+    h1 {
+        text-align: center;
+        font-size: 3em;
+    }
+
+    .inline-logo {
+        width: 2em;
+        height: 2em;
+        vertical-align: middle;
+        margin-right: 0.25em;
+    }
+
+    .content-container {
+        max-width: clamp(5rem, 90%, 100rem);
+        margin: 0 auto;
+    }
+
+    .intro {
+        font-size: 2em;
+        font-weight: bold;
+        margin-top: 0.5em;
+        color: navy;
+        text-wrap: balance;
+    }
+
+    .contact-link {
+        font-weight: bold;
+    }
+
+    .designs {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .design {
+        box-sizing: border-box;
+        width: min(20rem, 100%);
+        padding: 1.5rem 2rem;
+        border-radius: 0.5rem;
+        background-color: dimGrey;
+        color: white;
+    }
+
+    .design h3 {
+        margin-top: 0;
+        text-align: center;
+    }
+
+    figure {
+        margin: 0;
+        padding: 0;
+    }
+
+    figcaption {
+        font-style: italic;
+        text-align: center;
+        margin-top: 0.5em;
+    }
+
+    footer {
+        text-align: center;
+        margin-top: 2em;
+        font-size: 0.8em;
+        color: grey;
+    }
+
+    @media screen and (max-width: 600px) {
+        h1 {
+            font-size: 2em;
+        }
+        .intro {
+            font-size: 1.5em;
+        }
+    }
+</style>
+
+<h1>
+    <img src="/img/logo.svg" alt="Tiny Little Logo" class="inline-logo"/>
+    Tiny Little
+</h1>
+<div class="content-container">
+    <p class="intro">
+        Tiny Little is run by a local photographer who loves to capture beautiful scenes from nature
+        and share them with the community.
+    </p>
+    <p>
+        Interested in purchasing greeting cards to sell at your business?
+        <a class="contact-link" href="mailto:test-setup-not-a-real-address@example.com">Send an email!</a>
+    </p>
+    <h2>Explore current designs</h2>
+    <div class="designs">
+        {% for id, design in designs %}
+            <div class="design">
+                <h3>{{ design.name }}</h3>
+                <figure>
+                    <img src="/img/{{ id }}.jpg" alt="{{ design.name }} photo on the front of a greeting card" style="max-width: 100%; height: auto;">
+                    <figcaption>{{ design.description }}</figcaption>
+                </figure>
+            </div>
+        {% endfor %}
+    </div>
+    <h2>Questions? Comments? Design ideas?</h2>
+    <p>
+        Please reach out via email to <a class="contact-link" href="mailto:test-setup-not-a-real-address@example.com">test-setup-not-a-real-address@example.com</a>.
+    </p>
+    <footer>
+        <p>
+            <a href="https://github.com/tiny-little/website/">Website source</a> | Unless otherwise noted, the contents of this website are copyright © 2025 "Tiny Little" and its operator(s). All rights reserved.
+        </p>
+    </footer>
+</div>

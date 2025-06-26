@@ -1,0 +1,15 @@
+{
+  "name": "tiny-little-website",
+  "description": "Website for Tiny Little, a card design company",
+  "type": "module",
+  "scripts": {
+    "build": "pnpm exec eleventy",
+    "dev": "pnpm exec eleventy --serve"
+  },
+  "packageManager": "pnpm@10.12.4",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy-img": "^6.0.4",
+    "@iarna/toml": "^2.2.5"
+  }
+}
